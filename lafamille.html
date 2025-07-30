@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Family Diary</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: #fff5e6;
+      color: #4d2600;
+      overflow-x: hidden;
+    }
+    .cover {
+      height: 100vh;
+      background: linear-gradient(145deg, #ffecd2 0%, #fcb69f 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      padding: 20px;
+    }
+    .cover h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    .cover p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+    .cover input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .cover button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      background: #ff9966;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      cursor: pointer;
+    }
+    .diary {
+      display: none;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      border-radius: 12px;
+    }
+    .entry {
+      margin-bottom: 40px;
+    }
+    .entry h2 {
+      border-bottom: 2px dashed #ff9966;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+    .entry p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+    .hearts {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .heart {
+      position: absolute;
+      color: pink;
+      font-size: 24px;
+      animation: float 5s ease-in infinite;
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="cover" id="cover">
+    <h1>My Beautiful Family</h1>
+    <p>This is my little diary of love for Mumma, Mausi, Mausa Ji, Bhaiya, and Papa.</p>
+    <input type="password" id="password" placeholder="Enter the secret password...">
+    <button onclick="checkPassword()">Enter Diary</button>
+  </div>
+
+  <div class="diary" id="diary">
+    <div class="entry">
+      <h2>Mumma</h2>
+      <p>You are my strength, my peace, and my eternal warmth. Your love surrounds me even when you're silent. I’m grateful for your sacrifices and hugs that fix everything.</p>
+    </div>
+    <div class="entry">
+      <h2>Mausi</h2>
+      <p>You’ve always treated me like your own. Your gentle heart, your laughter, and your endless care are blessings I cherish every day. You are my second mumma in every way.</p>
+    </div>
+    <div class="entry">
+      <h2>Mausa Ji</h2>
+      <p>Your calmness and guidance have been my moral compass. Thank you for your silent strength, for believing in me, and for always showing up when I need it most.</p>
+    </div>
+    <div class="entry">
+      <h2>Bhaiya</h2>
+      <p>You’re not just my brother, you're my best friend, my secret keeper, and my forever supporter. Life feels easier with you around, even from a distance.</p>
+    </div>
+    <div class="entry">
+      <h2>Papa</h2>
+      <p>Your silent love, your lessons, your protective presence—it's everything. Thank you for being my superhero in a simple shirt. I’ll always be your little girl.</p>
+    </div>
+  </div>
+
+  <div class="hearts" id="hearts"></div>
+
+  <script>
+    function checkPassword() {
+      const pass = document.getElementById("password").value;
+      if (pass === "together at the end") {
+        document.getElementById("cover").style.display = "none";
+        document.getElementById("diary").style.display = "block";
+      } else {
+        alert("Oops! That’s not the right password.");
+      }
+    }
+
+    // Floating hearts animation
+    const hearts = document.getElementById('hearts');
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      heart.innerText = '❤';
+      hearts.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }, 300);
+  </script>
+</body>
+</html>
